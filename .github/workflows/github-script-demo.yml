@@ -1,0 +1,23 @@
+name: GitHub Script Demo
+
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+      - main
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run GitHub Script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log("Hello from GitHub Script 🚀");
+
+            console.log("Repository:", context.repo.repo);
+            console.log("Owner:", context.repo.owner);
+            console.log("Triggered by:", context.actor);
+
+            return "Script completed successfully";
